@@ -13,6 +13,8 @@ simple ydml validator using Nokogiri
 
 == SYNOPSIS:
 
+ruby check_ydml.rb <target directory>
+
 == REQUIREMENTS: 
 
 * Nokogiri
