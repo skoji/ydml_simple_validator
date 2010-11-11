@@ -1,0 +1,20 @@
+start = element ydml { Block* }
+Block = Paragraph* & Center* & Left* & Right* & Quote* & Hasen*
+Paragraph = Inline +
+Inline = Large|Small|Bold|Image|Ruby|text
+Center = element center { Inline+ }
+Left = element left { Inline+ }
+Right = element right { Inline+ }
+Quote = element quote { Inline+ }
+Hasen = element hasen { empty }
+
+Large = element large { Inline+ }
+Small = element small { Inline+ }
+Bold = element bold { Inline+ }
+Ruby = element ruby { text }
+
+Image =
+  element image {
+    attribute src { text },
+    attribute size { text }?
+  }

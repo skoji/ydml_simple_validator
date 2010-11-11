@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <element name="ydml">
+      <zeroOrMore>
+        <ref name="Block"/>
+      </zeroOrMore>
+    </element>
+  </start>
+  <define name="Block">
+    <interleave>
+      <zeroOrMore>
+        <ref name="Paragraph"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="Center"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="Left"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="Right"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="Quote"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="Hasen"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="Paragraph">
+    <oneOrMore>
+      <ref name="Inline"/>
+    </oneOrMore>
+  </define>
+  <define name="Inline">
+    <choice>
+      <ref name="Large"/>
+      <ref name="Small"/>
+      <ref name="Bold"/>
+      <ref name="Image"/>
+      <ref name="Ruby"/>
+      <text/>
+    </choice>
+  </define>
+  <define name="Center">
+    <element name="center">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Left">
+    <element name="left">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Right">
+    <element name="right">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Quote">
+    <element name="quote">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Hasen">
+    <element name="hasen">
+      <empty/>
+    </element>
+  </define>
+  <define name="Large">
+    <element name="large">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Small">
+    <element name="small">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Bold">
+    <element name="bold">
+      <oneOrMore>
+        <ref name="Inline"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Ruby">
+    <element name="ruby">
+      <text/>
+    </element>
+  </define>
+  <define name="Image">
+    <element name="image">
+      <attribute name="src"/>
+      <optional>
+        <attribute name="size"/>
+      </optional>
+    </element>
+  </define>
+</grammar>
